@@ -26,10 +26,10 @@
 
 3. Population
    
-   a. gpw_v4_population_count_adjusted_rev11_30_min.nc
+   a. gpw_v4_population_count_adjusted_to_2015_unwpp_country_totals_rev11_totpop_30_min.nc
        # global gridded population
    
-   b. geo_pop_25plus_ratio_2015.nc4
+   b. gpw_v4_basic_demographic_characteristics_rev11_bt_2010_cntm_30_min.nc
        # age profile by area
 
 
@@ -44,7 +44,7 @@
 2. ShipEmissionAnnual
     # aggregated annual ship emissions caculated in this study based on AIS data
     
-    a. EM2015_%scenario_%sector
+    a. ./%scenario/gb_Latitude_Longitude_2015_%sector.csv
         # scenario: 
                 BL  : baseline
                 S1N0: 0.5% Sulphur Cap
@@ -83,10 +83,14 @@
                 S2N0_ID  : 0.1% Sulphur Cap scenario, emissions from all vessels and non-ship sector
                 S1N1_ID  : Tier III NOx Standard scenario, emissions from all vessels and non-ship sector
     
-    a. YAVG_Conc_PM25_%simulation
+    # resolution:
+                2x25  : 2 degree x 2.5 degree lat-lon
+                05x05 : 0.5 degree x 0.5 degree lat-lon
+
+    a. YAVG_Conc_PM25_%simulation_%resolution
         # annual average PM concentration for each simulation 
-    
-    b. YAVG_Conc_PM25_%simulation1_%simulation2 
+
+    b. YAVG_Conc_PM25_%simulation1_%simulation2_%resolution 
         # difference of annual average PM concentration between simulations (simulation 1 - simulation 2)
 
 
@@ -101,16 +105,16 @@
                 S2N0_ID  : 0.1% Sulphur Cap scenario, emissions from all vessels and non-ship sector
                 S1N1_ID  : Tier III NOx Standard scenario, emissions from all vessels and non-ship sector
     
-    a. Mortality_GEMM_NCD_PM25_%simulation.nc
+    a. Mortality_PM25_GEMM_NCD_%simulation.nc
         # mortality caused by NCD
     
-    b. Mortality_GEMM_LRI_PM25_%simulation.nc
-        # mortality caused by LRI: 
+    b. Mortality_PM25_GEMM_LRI_%simulation.nc
+        # mortality caused by LRI 
     
-    c. Mortality_GEMM_NCD_LRI_PM25_%simulation.nc
+    c. Mortality_PM25_GEMM_NCD_LRI_%simulation.nc
         # totaly mortality caused by NCD+LRI
     
-    d. Mortality_GEMM_NCD_LRI_PM25_%simulation1_%simulation2.nc
+    d. Mortality_PM25_GEMM_NCD_LRI_%simulation1_%simulation2.nc
         # mortality difference between simulations (simulation1 - simulation2)
 
 
@@ -126,29 +130,31 @@ Scripts:
    # for other simulations, just change the data directory
    
    a. HEMCO
+
+
+2. Data processing
+   a. P1_Data_GEOSChemAnnualPM.py
+       # calculate annual-average PM2.5 concentration
    
-   b. ......
- 
- 
-2. to calculate health impact
-   a. Data_HealthResult.py 
+   b. P2_Data_PopulationPM.py
+       # link gridded population to PM2.5 concentration
+
+   c. P3_Data_HealthResult.py 
        # to estiamte mortality from PM2.5 concentration
 
 
 3. to make plots:
 
-   a. plot_emission.py  
+   a. Figure_1.py  
        #  to generate spatial maps displaying emissions  (Figure 1)
 
-   b. plot_pm_map.py
+   b. Figure_2n3.py
        # to generate spatial maps displaying PM2.5 concentration (Figure 2 & 3)
 
-   c. plot_gemm_map.py
+   c. Figure_4n5.py
        # to generate spatial maps displaying mortality (Figure 4 & 5)
 
    
-
-
 
 ##################################################
 ## Figures
@@ -156,21 +162,21 @@ Scripts:
 
 diretory = ./Figure/
 
-1. Fig_EM_%emission_%secenario_%sector (eps/svg/png/pdf)
+1. Figure_%number_emission_map_%secenario_%sector (eps/svg/png/pdf)
    # Figure 1
    
-   a. Fig_EM_CO2_BL_I
+   a. Figure_1a_emission_map_BL_I
        # geographical distribution of CO2 emissions from maritime shipping in 2015 by international vessels
    
-   b. Fig_EM_CO2_BL_D
+   b. Figure_1b_emission_map_BL_D
        # geographical distribution of CO2 emissions from maritime shipping in 2015 by domestic vessels
 
 
-2. Fig_GC_PM_%simulation1_%simulation2 (eps/svg/png/pdf)
+2. Figure_%number_YAVG_Conc_PM25_%simulation1_%simulation2_%resolution (eps/svg/png/pdf)
    
    # Figure 2, Figure 3
 
-   a. Fig_GC_PM_BL_ID_BL_D (Figure 2a)
+   a. Figure_2a_YAVG_Conc_PM25_BL_ID_BL_D_2x25 (Figure 2a)
        # Simulated annual-mean surface PM2.5 concentrations attributed to international vessels under the Baseline policy scenario
        # calculated by PM difference between two simulations (BL_ID - BL_D) 
    
@@ -191,7 +197,7 @@ diretory = ./Figure/
        # calculated by PM difference between two simulations (S1N0_ID - S1N1_ID) 
        
 
-3. Fig_GEMM_NCD_LRI_%simulation1_%simulation2 (eps/svg/png/pdf)
+3. Figure_%number_Mortality_PM25_GEMM_NCD_LRI_%simulation1_%simulation2_%resolution (eps/svg/png/pdf)
    # Figure 4, Figure 5
 
    a. Fig_GEMM_NCD_LRI_BL_ID_BL_D (Figure 4a)
