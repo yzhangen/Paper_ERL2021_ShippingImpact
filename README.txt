@@ -180,19 +180,19 @@ diretory = ./Figure/
        # Simulated annual-mean surface PM2.5 concentrations attributed to international vessels under the Baseline policy scenario
        # calculated by PM difference between two simulations (BL_ID - BL_D) 
    
-   b. Fig_GC_PM_BL_ID_BL_I (Figure 2b)
+   b. Figure_2b_GC_PM_BL_ID_BL_I (Figure 2b)
        # Simulated annual-mean surface PM2.5 concentrations attributed to domestic vessels under the Baseline policy scenario
        # calculated by PM difference between two simulations (BL_ID - BL_I) 
 
-   c. Fig_GC_PM_BL_ID_S1N0_ID (Figure 3a)
+   c. Figure_2c_GC_PM_BL_ID_S1N0_ID (Figure 3a)
        # Reduction in annual-mean PM2.5 concentration due to 0.5% Sulphur Cap; 
        # calculated by PM difference between two simulations (BL_ID - S1N0_ID) 
        
-   d. Fig_GC_PM_S1N0_ID_S2N0_ID (Figure 3b)
+   d. Figure_3a_GC_PM_S1N0_ID_S2N0_ID (Figure 3b)
        # Reduction in annual-mean PM2.5 concentration due to 0.1% Sulphur Cap; 
        # calculated by PM difference between two simulations (S1N0_ID - S2N0_ID) 
        
-   e. Fig_GC_PM_S1N0_ID_S1N1_ID (Figure 3c)
+   e. Figure_3b_GC_PM_S1N0_ID_S1N1_ID (Figure 3c)
        # Reduction in annual-mean PM2.5 concentration due to Tier III NOx Standard; 
        # calculated by PM difference between two simulations (S1N0_ID - S1N1_ID) 
        
